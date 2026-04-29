@@ -16,7 +16,7 @@ const policies = [
   hasNumbersPolicy,
 ];
 
-export function usePasswordStrength(password) {
+export default function usePasswordStrength(password) {
   return useMemo(() => {
     return evaluatePassword(password, policies);
   }, [password]);
