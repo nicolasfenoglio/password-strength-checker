@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDebounce } from '../../../shared/hooks/debounce';
-import { usePasswordStrength } from './usePasswordStrength';
+import usePasswordStrength from './usePasswordStrength';
 import { generatePassword } from '../../../domain/password/generator/passwordGenerator';
 
 export default function usePassword() {

@@ -46,8 +46,8 @@ export default function PasswordGeneratorPanel({
               type="range"
               min="8"
               max="50"
-              value={options.length}
-              onChange={(e) => onOptionChange('length', Number(e.target.value))}
+              value={inputValue}
+              onChange={(e) => setInputValue(e.target.value)}
               className="flex-1 accent-primary"
             />
 
