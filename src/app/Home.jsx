@@ -30,14 +30,13 @@ export default function Home() {
   };
 
   return (
-    <main className="flex flex-col p-4 bg-bg h-max w-full items-center justify-center">
+    <main className="flex flex-col p-4 bg-bg w-full items-center justify-center">
       <div className="max-w-xl text-center mb-2">
         <h1 className="text-3xl font-semibold text-primary-600 mb-3">
           Generador y Evaluador de Contraseñas
         </h1>
         <p className="text-muted">
-          Crea o pega una contraseña para verificar su seguridad al instante con
-          estándares de nivel bancaria.
+          Crea o pega una contraseña para verificar su seguridad al instante.
         </p>
       </div>
 

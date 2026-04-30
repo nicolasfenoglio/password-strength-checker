@@ -1,14 +1,18 @@
+import GitHubIcon from '../../shared/icons/GitHubIcon';
+
 function Footer() {
   return (
-    <footer className="bg-bg text-muted py-4 px-1 flex items-center justify-between shadow-elev sticky top-0 z-10">
-      <p>&copy; 2026 - Nicolás Fenoglio</p>
+    <footer className="bg-bg text-muted py-4 px-4 flex items-center justify-between shadow-elev sticky top-0 z-10">
+      <p>&copy; 2026 - Nicolás Fenoglio. Trabajo Practico 2.</p>
       <p>
         <a
-          href="https://www.example.com/como-crear-contrasenas-seguras"
+          className="flex items-center gap-1 hover:cursor-pointer hover:underline hover:text-primary transition-colors"
+          href="https://github.com/nicolasfenoglio/password-strength-checker"
           target="_blank"
           rel="noopener noreferrer"
         >
-          ¿Como crear contraseñas seguras?
+          <GitHubIcon className="size-4" />
+          GitHub
         </a>
       </p>
     </footer>
