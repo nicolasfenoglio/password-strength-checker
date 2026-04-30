@@ -1,6 +1,6 @@
 export const hasNumbersPolicy = {
   id: 'hasNumbers',
-  weight: 3,
+  weight: 2,
   evaluate(password) {
     const passed = /\d/.test(password);
     return {
