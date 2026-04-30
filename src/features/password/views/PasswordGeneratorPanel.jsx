@@ -4,7 +4,6 @@ import { useDebounce } from '../../../shared/hooks/debounce';
 export default function PasswordGeneratorPanel({
   options,
   onOptionChange,
-  onGenerate,
   className = '',
 }) {
   const [inputValue, setInputValue] = useState(options.length);

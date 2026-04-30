@@ -2,7 +2,7 @@ import GenerateIcon from '../../../shared/icons/GenerateIcon';
 import ArrowIcon from '../../../shared/icons/ArrowIcon';
 
 export default function PasswordGenerateButton({
-  onClick,
+  onGenerate,
   toggleOptions,
   isOpen,
 }) {
@@ -11,7 +11,7 @@ export default function PasswordGenerateButton({
       <div className="flex w-full rounded-md overflow-hidden shadow-elev">
         <button
           type="button"
-          onClick={() => onClick()}
+          onClick={() => onGenerate()}
           className="flex-1 flex items-center justify-start gap-2 px-4 py-2 bg-primary text-accent-contrast hover:cursor-pointer hover:bg-primary-600 transition"
         >
           <GenerateIcon className="size-5" />

@@ -4,7 +4,7 @@ import EyeIcon from '../../../shared/icons/EyeIcon';
 import EyeSlashIcon from '../../../shared/icons/EyeSlashIcon';
 import ClipboardIcon from '../../../shared/icons/ClipboardIcon';
 
-export default function PasswordInput({ value, onChange }) {
+export default function PasswordInput({ value, onChange, onCopy }) {
   const [visible, setVisible] = useState(false);
 
   return (
@@ -30,7 +30,10 @@ export default function PasswordInput({ value, onChange }) {
         </button>
         <button
           type="button"
-          onClick={() => navigator.clipboard.writeText(value)}
+          onClick={() => {
+            navigator.clipboard.writeText(value);
+            if (onCopy) onCopy();
+          }}
           className="flex flex-row items-center justify-between gap-1 px-3 py-2 m-2 h-full text-sm text-primary-600 hover:bg-primary-200/20 transition border rounded-md hover:cursor-pointer"
         >
           <ClipboardIcon className="size-5" />

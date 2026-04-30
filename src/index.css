@@ -36,3 +36,38 @@
 ::after {
   box-sizing: border-box;
 }
+
+@keyframes toast-progress {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
+  }
+}
+
+@keyframes toast-in {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes toast-out {
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+.animate-toast-in {
+  animation: toast-in 0.3s ease-out;
+}
+
+.animate-toast-out {
+  animation: toast-out 0.25s ease-in forwards;
+}

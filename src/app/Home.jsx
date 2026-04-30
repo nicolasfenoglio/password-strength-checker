@@ -8,8 +8,11 @@ import {
   usePasswordGenerator,
   usePasswordStrength,
 } from '../features/password';
+import { ToastContainer, useToasts } from '../shared/toast';
 
 export default function Home() {
+  const { toasts, addToast, removeToast, pauseTimer, resumeTimer } =
+    useToasts();
   const { password, setPassword, results, normalizedScore } = usePassword();
   const { options, setOptions, generatePassword } = usePasswordGenerator({
     setPassword,
@@ -52,12 +55,23 @@ export default function Home() {
         <PasswordInputPanel
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          onCopy={() => {
+            console.log('Contraseña copiada al portapapeles');
+            addToast('Contraseña copiada al portapapeles', {
+              type: 'success',
+            });
+          }}
           results={results}
           normalizedScore={normalizedScore}
         />
 
         <PasswordGenerateButton
-          onClick={() => generatePassword()}
+          onGenerate={() => {
+            generatePassword();
+            addToast('Contraseña generada exitosamente', {
+              type: 'success',
+            });
+          }}
           toggleOptions={toggleOptions}
           isOpen={isOpen}
         />
@@ -67,7 +81,6 @@ export default function Home() {
             <PasswordGeneratorPanel
               options={options}
               onOptionChange={handleOptionChange}
-              onGenerate={(generated) => setPassword(generated)}
             />
           </>
         )}
@@ -76,6 +89,12 @@ export default function Home() {
           momento.
         </p>
       </form>
+      <ToastContainer
+        toasts={toasts}
+        removeToast={removeToast}
+        pauseTimer={pauseTimer}
+        resumeTimer={resumeTimer}
+      />
     </main>
   );
 }
