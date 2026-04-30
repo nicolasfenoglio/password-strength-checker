@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { evaluatePassword } from '../../../domain/password/evaluator/passwordEvaluator';
-import { minLengthPolicy } from '../../../domain/password/policies/minLengthPolicy';
+import { lengthScorePolicy } from '../../../domain/password/policies/lengthScorePolicy';
 import { uppercasePolicy } from '../../../domain/password/policies/uppercasePolicy';
 import { sequenceAndRepetitionPolicy } from '../../../domain/password/policies/sequenceAndRepetitionPolicy';
 import { lowercasePolicy } from '../../../domain/password/policies/lowercasePolicy';
@@ -8,7 +8,7 @@ import { hasSymbolsPolicy } from '../../../domain/password/policies/hasSymbolsPo
 import { hasNumbersPolicy } from '../../../domain/password/policies/hasNumbersPolicy';
 
 const policies = [
-  minLengthPolicy,
+  lengthScorePolicy,
   uppercasePolicy,
   lowercasePolicy,
   sequenceAndRepetitionPolicy,
