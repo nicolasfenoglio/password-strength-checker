@@ -1,34 +1,30 @@
-export const lengthScorePolicy = {
-  id: 'length-score',
-
+export const lengthPolicy = {
+  id: 'length',
+  weight: 4,
   evaluate(password) {
-    const length = password.length;
+    const len = password.length;
 
     let score = 0;
-    let message = '';
 
-    if (length < 8) {
-      score = 0;
-      message = 'Muy corta';
-    } else if (length < 12) {
-      score = 2;
-      message = 'Longitud mínima';
-    } else if (length < 16) {
-      score = 3;
-      message = 'Buena longitud';
-    } else if (length < 24) {
-      score = 4;
-      message = 'Muy buena longitud';
-    } else {
-      score = 5;
-      message = 'Excelente longitud';
-    }
+    if (len >= 8) score = 0.3;
+    if (len >= 12) score = 0.6;
+    if (len >= 16) score = 0.8;
+    if (len >= 24) score = 1;
+
+    let message = '';
+    if (len < 8) message = 'La contraseña es demasiado corta';
+    if (len >= 8 && len < 12)
+      message = 'La contraseña es de longitud aceptable';
+    if (len >= 12 && len < 16) message = 'La contraseña es de buena longitud';
+    if (len >= 16 && len < 24)
+      message = 'La contraseña es de excelente longitud';
+    if (len >= 24) message = 'La contraseña es de longitud excepcional';
 
     return {
+      passed: score > 0,
       id: this.id,
-      passed: length >= 8,
+      score,
       message,
-      weight: score, // dinámico
     };
   },
 };

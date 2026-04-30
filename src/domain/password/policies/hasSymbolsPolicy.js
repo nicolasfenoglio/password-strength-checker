@@ -1,15 +1,15 @@
 export const hasSymbolsPolicy = {
   id: 'hasSymbols',
-
+  weight: 2,
   evaluate(password) {
     const passed = /[!@#$%^&*(),.?":{}|<>_]/.test(password);
     return {
-      id: this.id,
       passed,
+      id: this.id,
+      score: passed ? 1 : 0,
       message: passed
-        ? 'Contiene símbolos'
-        : 'No contiene símbolos especiales como !@#$%^&*(),.?":{}|<>_',
-      weight: 2,
+        ? 'La contraseña contiene símbolos especiales.'
+        : 'La contraseña no contiene símbolos especiales como !@#$%^&*(),.?":{}|<>_',
     };
   },
 };

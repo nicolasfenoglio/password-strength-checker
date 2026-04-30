@@ -1,13 +1,15 @@
 export const hasNumbersPolicy = {
   id: 'hasNumbers',
-
+  weight: 3,
   evaluate(password) {
     const passed = /\d/.test(password);
     return {
-      id: this.id,
       passed,
-      message: passed ? 'Contiene números' : 'Debe incluir al menos un número',
-      weight: 3,
+      id: this.id,
+      score: passed ? 1 : 0,
+      message: passed
+        ? 'La contraseña contine números.'
+        : 'La contraseña no contiene números.',
     };
   },
 };

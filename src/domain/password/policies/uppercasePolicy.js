@@ -1,16 +1,16 @@
 export const uppercasePolicy = {
   id: 'uppercase',
-
+  weight: 2,
   evaluate(password) {
     const passed = /[A-Z]/.test(password);
 
     return {
-      id: this.id,
       passed,
+      id: this.id,
       message: passed
-        ? 'Contiene mayúsculas'
-        : 'Debe incluir al menos una mayúscula',
-      weight: 2,
+        ? 'La contraseña contiene mayúsculas'
+        : 'La contraseña no contiene letras mayúsculas (A-Z)',
+      score: passed ? 1 : 0,
     };
   },
 };

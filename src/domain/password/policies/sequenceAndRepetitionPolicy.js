@@ -1,27 +1,27 @@
 export const sequenceAndRepetitionPolicy = {
   id: 'sequence-repetition',
-
+  weight: 2,
   evaluate(password) {
     const hasRepetition = hasRepeatedChars(password, 3);
     const hasSequence = hasSequentialChars(password, 4);
 
     const passed = !hasRepetition && !hasSequence;
 
-    let message = 'No contiene patrones débiles';
+    let message = 'La contraseña no contiene patrones débiles';
 
     if (hasRepetition && hasSequence) {
-      message = 'Evitá repeticiones y secuencias (ej: aaa, 1234)';
+      message = 'La contraseña contiene secuencias y repeticiones.';
     } else if (hasRepetition) {
-      message = 'Evitá repetir caracteres (ej: aaa, 111)';
+      message = 'La contraseña contiene repeticiones.';
     } else if (hasSequence) {
-      message = 'Evitá secuencias (ej: 1234, abcd)';
+      message = 'La contraseña contiene secuencias de caracteres.';
     }
 
     return {
-      id: this.id,
       passed,
+      id: this.id,
+      score: passed ? 1 : 0,
       message,
-      weight: 2,
     };
   },
 };

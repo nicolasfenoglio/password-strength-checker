@@ -1,15 +1,16 @@
 export const lowercasePolicy = {
   id: 'lowercase',
+  weight: 2,
   evaluate(password) {
     const passed = /[a-z]/.test(password);
 
     return {
-      id: this.id,
       passed,
+      id: this.id,
       message: passed
-        ? 'Contiene minúsculas'
-        : 'Debe incluir al menos una minúscula',
-      weight: 2,
+        ? 'La contraseña contiene minúsculas'
+        : 'La contraseña no contiene letras minúsculas (a-z)',
+      score: passed ? 1 : 0,
     };
   },
 };
