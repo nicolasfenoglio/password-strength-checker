@@ -5,7 +5,7 @@ import { generatePassword } from '../../../domain/password/generator/passwordGen
 
 export default function usePassword() {
   const [password, setPassword] = useState('');
-  const debouncedPassword = useDebounce(password, 300);
+  const debouncedPassword = useDebounce(password, 100);
   const { results, normalizedScore } = usePasswordStrength(debouncedPassword);
 
   return {
