@@ -56,7 +56,13 @@ export default function Home() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           onCopy={() => {
-            console.log('Contraseña copiada al portapapeles');
+            if (!password || password.length === 0) {
+              addToast('No hay contraseña para copiar', {
+                type: 'error',
+              });
+              return;
+            }
+            window.navigator.clipboard.writeText(password);
             addToast('Contraseña copiada al portapapeles', {
               type: 'success',
             });

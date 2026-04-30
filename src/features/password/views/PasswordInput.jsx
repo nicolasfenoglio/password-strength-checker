@@ -30,11 +30,12 @@ export default function PasswordInput({ value, onChange, onCopy }) {
         </button>
         <button
           type="button"
-          onClick={() => {
-            navigator.clipboard.writeText(value);
-            if (onCopy) onCopy();
-          }}
-          className="flex flex-row items-center justify-between gap-1 px-3 py-2 m-2 h-full text-sm text-primary-600 hover:bg-primary-200/20 transition border rounded-md hover:cursor-pointer"
+          onClick={() => onCopy && onCopy()}
+          disabled={!value || value.length === 0}
+          className="
+            flex flex-row items-center justify-between gap-1 px-3 py-2 m-2 h-full text-sm border rounded-md transition text-primary-600 border-primary-300/30 hover:bg-primary-200/20 hover:cursor-pointer
+            disabled:text-muted disabled:bg-muted/10 disabled:border-muted/20 disabled:cursor-not-allowed disabled:opacity-60disabled:hover:bg-transparent
+          "
         >
           <ClipboardIcon className="size-5" />
           <p>Copiar</p>
