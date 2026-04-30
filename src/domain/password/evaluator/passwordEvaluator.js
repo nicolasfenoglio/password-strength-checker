@@ -3,6 +3,17 @@ function isValidPolicy(policy) {
 }
 
 export function evaluatePassword(password, policies) {
+  if (!password || typeof password !== 'string') {
+    return {
+      results: [],
+      score: 0,
+      maxScore: policies.reduce(
+        (acc, p) => acc + (isValidPolicy(p) ? p.weight : 0),
+        0,
+      ),
+      normalizedScore: 0,
+    };
+  }
   const results = policies
     .filter(isValidPolicy)
     .map((p) => p.evaluate(password));
